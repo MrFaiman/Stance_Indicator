@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+    <style>
+        #stand,#crouch,#prone{
+            display: none;
+        }
+    </style>
+    <script>
+        $(function () {
+        window.addEventListener("message", function (event) {
+          if (event.data.type == "stand") {
+            $("#stand").fadeIn();
+            $("#crouch").hide();
+            $("#prone").hide();
+            $("#car").hide();
+          } else if(event.data.type == "crouch"){
+            $("#crouch").fadeIn();
+            $("#prone").hide();
+            $("#stand").hide();
+            $("#car").hide();
+          }else if(event.data.type == "prone"){
+            $("#prone").fadeIn();
+            $("#stand").hide();
+            $("#crouch").hide();
+            $("#car").hide();
+          }else if(event.data.type == "car"){
+            $("#prone").hide();
+            $("#stand").hide();
+            $("#crouch").hide();
+          }
+        });
+      });
+    </script>
+    
+</head>
+<body>
+    <div id="admin">
+        <center>
+            <img id="stand" align="left" src="./img/stand.png">
+            <img id="crouch" align="left" src="./img/crouch.png">
+            <img id="prone" align="left" src="./img/prone.png">
+        </center>
+      </div>
+</body>
+</html>
